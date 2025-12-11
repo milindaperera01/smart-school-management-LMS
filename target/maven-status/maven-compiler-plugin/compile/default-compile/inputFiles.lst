@@ -1,20 +1,39 @@
-/home/milinda/Documents/projects/smart-school-management-LMS/src/main/java/School/LMS/LmsApplication.java
-/home/milinda/Documents/projects/smart-school-management-LMS/src/main/java/School/LMS/config/JWTfilter.java
-/home/milinda/Documents/projects/smart-school-management-LMS/src/main/java/School/LMS/config/SecurityConfig.java
-/home/milinda/Documents/projects/smart-school-management-LMS/src/main/java/School/LMS/controller/TestController.java
-/home/milinda/Documents/projects/smart-school-management-LMS/src/main/java/School/LMS/controller/UserController.java
-/home/milinda/Documents/projects/smart-school-management-LMS/src/main/java/School/LMS/dto/UserLogReq.java
-/home/milinda/Documents/projects/smart-school-management-LMS/src/main/java/School/LMS/dto/UserRegReq.java
-/home/milinda/Documents/projects/smart-school-management-LMS/src/main/java/School/LMS/dto/UserRes.java
-/home/milinda/Documents/projects/smart-school-management-LMS/src/main/java/School/LMS/models/ClassRoom.java
-/home/milinda/Documents/projects/smart-school-management-LMS/src/main/java/School/LMS/models/Principal.java
-/home/milinda/Documents/projects/smart-school-management-LMS/src/main/java/School/LMS/models/Student.java
-/home/milinda/Documents/projects/smart-school-management-LMS/src/main/java/School/LMS/models/Subject.java
-/home/milinda/Documents/projects/smart-school-management-LMS/src/main/java/School/LMS/models/Teacher.java
-/home/milinda/Documents/projects/smart-school-management-LMS/src/main/java/School/LMS/models/TeachingAssignment.java
-/home/milinda/Documents/projects/smart-school-management-LMS/src/main/java/School/LMS/models/UserPrinciple.java
-/home/milinda/Documents/projects/smart-school-management-LMS/src/main/java/School/LMS/models/Users.java
-/home/milinda/Documents/projects/smart-school-management-LMS/src/main/java/School/LMS/repos/UserRepo.java
-/home/milinda/Documents/projects/smart-school-management-LMS/src/main/java/School/LMS/services/JWTservice.java
-/home/milinda/Documents/projects/smart-school-management-LMS/src/main/java/School/LMS/services/MyUserDetailService.java
-/home/milinda/Documents/projects/smart-school-management-LMS/src/main/java/School/LMS/services/UserService.java
+E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\config\JWTfilter.java
+E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\config\SecurityConfig.java
+E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\controller\ClassroomController.java
+E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\controller\MarksController.java
+E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\controller\SubjectController.java
+E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\controller\TeacherController.java
+E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\controller\TestController.java
+E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\controller\UserController.java
+E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\dto\ClassRoomDTO.java
+E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\dto\ClassRoomUpdateDTO.java
+E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\dto\MarksAdd.java
+E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\dto\SubjectDTO.java
+E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\dto\TeacherRegistrationDTO.java
+E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\dto\UserLogReq.java
+E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\dto\UserRegReq.java
+E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\dto\UserRes.java
+E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\LmsApplication.java
+E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\models\ClassRoom.java
+E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\models\Marks.java
+E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\models\Principal.java
+E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\models\Student.java
+E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\models\Subject.java
+E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\models\Teacher.java
+E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\models\TeachingAssignment.java
+E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\models\UserPrinciple.java
+E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\models\Users.java
+E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\repos\ClassRoomRepo.java
+E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\repos\MarksRepo.java
+E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\repos\StudentRepo.java
+E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\repos\SubjectRepo.java
+E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\repos\TeacherRepo.java
+E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\repos\UserRepo.java
+E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\services\ClassRoomService.java
+E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\services\JWTservice.java
+E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\services\MarksService.java
+E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\services\MyUserDetailService.java
+E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\services\SubjectService.java
+E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\services\TeacherService.java
+E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\services\UserService.java

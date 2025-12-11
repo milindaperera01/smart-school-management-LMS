@@ -58,6 +58,7 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/user/**").permitAll()
+                        .requestMatchers("subjects/create").hasRole("PRINCIPAL")
                         .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults())
