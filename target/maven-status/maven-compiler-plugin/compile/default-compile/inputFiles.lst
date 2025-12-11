@@ -2,6 +2,7 @@ E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\confi
 E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\config\SecurityConfig.java
 E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\controller\ClassroomController.java
 E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\controller\MarksController.java
+E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\controller\StudentController.java
 E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\controller\SubjectController.java
 E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\controller\TeacherController.java
 E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\controller\TestController.java
@@ -9,6 +10,8 @@ E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\contr
 E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\dto\ClassRoomDTO.java
 E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\dto\ClassRoomUpdateDTO.java
 E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\dto\MarksAdd.java
+E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\dto\StudentContactUpdateDTO.java
+E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\dto\StudentRegistrationDTO.java
 E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\dto\SubjectDTO.java
 E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\dto\TeacherRegistrationDTO.java
 E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\dto\UserLogReq.java
@@ -34,6 +37,7 @@ E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\servi
 E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\services\JWTservice.java
 E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\services\MarksService.java
 E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\services\MyUserDetailService.java
+E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\services\StudentService.java
 E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\services\SubjectService.java
 E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\services\TeacherService.java
 E:\lms\New folder\new\smart-school-management-LMS\src\main\java\School\LMS\services\UserService.java

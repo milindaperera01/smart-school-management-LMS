@@ -8,6 +8,7 @@ import java.security.Principal;
 import School.LMS.dto.TeacherRegistrationDTO;
 import School.LMS.services.TeacherService;
 import lombok.RequiredArgsConstructor;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/teachers")
@@ -19,7 +20,7 @@ public class TeacherController {
 
     @PostMapping("/register")
     @PreAuthorize("hasRole('TEACHER')")
-    public ResponseEntity<?> registerTeacherProfile(@RequestBody TeacherRegistrationDTO dto, Principal principal) {
+    public ResponseEntity<?> registerTeacherProfile(@Valid @RequestBody TeacherRegistrationDTO dto, Principal principal) {
         String username = principal.getName();
         teacherService.registerProfile(dto, username);
         return ResponseEntity.ok("Teacher profile registered successfully.");
