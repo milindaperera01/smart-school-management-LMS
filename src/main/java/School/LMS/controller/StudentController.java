@@ -11,11 +11,12 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import lombok.RequiredArgsConstructor;
 import java.security.Principal;
-
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 @RestController
 @RequestMapping("/students")
 @RequiredArgsConstructor
+@CrossOrigin
 public class StudentController {
     @Autowired
     private final StudentService studentService;

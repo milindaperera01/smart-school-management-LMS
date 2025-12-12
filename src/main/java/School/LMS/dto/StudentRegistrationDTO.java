@@ -26,4 +26,7 @@ public class StudentRegistrationDTO {
 
     private String home_contact2;
 
+    @NotBlank(message = "Classroom ID is required.")
+    private String classroomId;
+
 }

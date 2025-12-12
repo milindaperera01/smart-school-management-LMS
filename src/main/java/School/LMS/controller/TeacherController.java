@@ -9,10 +9,12 @@ import School.LMS.dto.TeacherRegistrationDTO;
 import School.LMS.services.TeacherService;
 import lombok.RequiredArgsConstructor;
 import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 @RestController
 @RequestMapping("/teachers")
 @RequiredArgsConstructor
+@CrossOrigin
 public class TeacherController {
     
     @Autowired

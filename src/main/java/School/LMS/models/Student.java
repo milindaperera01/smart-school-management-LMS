@@ -3,6 +3,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import java.time.LocalDate;
+import lombok.Getter;
+import lombok.Setter;
 
 
 @Entity
@@ -10,6 +12,8 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "student")
+@Getter
+@Setter
 public class Student {
     @Id
     private Long id;

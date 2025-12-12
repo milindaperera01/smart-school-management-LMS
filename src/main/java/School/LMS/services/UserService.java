@@ -55,4 +55,10 @@ public class UserService {
             return "User not verified";
         }
     }
+
+    public String getRole(String username) {
+    Users user = userRepo.findByUsername(username);
+    return user.getRole(); // or whatever field stores role
+}
+
 }

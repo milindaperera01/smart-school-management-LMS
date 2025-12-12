@@ -14,6 +14,7 @@ import School.LMS.models.Users;
 import School.LMS.models.Subject;
 import School.LMS.repos.SubjectRepo;
 import School.LMS.repos.UserRepo;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -58,6 +59,14 @@ public class TeacherService {
 
         teacherRepository.save(teacher);
     }
+
+    public boolean isProfileCompleted(String username) {
+    Optional<Teacher> teacher = teacherRepository.findByUserUsername(username);
+    return teacher.isPresent();  // profile completed if student record exists
+}
+
+
+    
 
 
 }
