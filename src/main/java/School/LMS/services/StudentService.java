@@ -34,9 +34,9 @@ public class StudentService {
         if (user == null) {
             throw new RuntimeException("User not found");
         }
-
-        ClassRoom classRoom = classroomRepo.findById(Long.parseLong(studentDTO.getClassroomId()))
-        .orElseThrow(() -> new RuntimeException("Classroom not found"));
+    ClassRoom classroom = classroomRepo
+            .findByGradeLevelAndClassName(studentDTO.getGradeLevel(), studentDTO.getClassName())
+            .orElseThrow(() -> new RuntimeException("Classroom not found"));
 
             
 
@@ -45,7 +45,7 @@ public class StudentService {
         }
 
         Student student = new Student();
-        student.setId(Long.parseLong(studentDTO.getId()));
+        student.setId(user.getId());
         student.setName(studentDTO.getName());
         student.setGender(studentDTO.getGender());
         student.setStatus(studentDTO.getStatus());
@@ -53,7 +53,7 @@ public class StudentService {
         student.setHome_contact2(studentDTO.getHome_contact2());
         student.setDateOfBirth(LocalDate.parse(studentDTO.getDateOfBirth()));
         student.setUser(user);
-        student.setClassRoom(classRoom);
+        student.setClassRoom(classroom);
         
 
         return studentRepository.save(student);

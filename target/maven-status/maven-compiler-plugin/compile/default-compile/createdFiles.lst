@@ -1,8 +1,1 @@
-School\LMS\repos\PrincipalRepo.class
-School\LMS\services\PrincipalService.class
-School\LMS\dto\LoginResponse.class
-School\LMS\dto\StudentRegistrationDTO.class
-School\LMS\controller\ClassroomController.class
-School\LMS\services\StudentService.class
-School\LMS\controller\StudentController.class
-School\LMS\dto\StudentContactUpdateDTO.class
+School\LMS\dto\StudentDTO.class

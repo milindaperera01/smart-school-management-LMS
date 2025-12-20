@@ -1,9 +1,11 @@
 package School.LMS.dto;
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-public class SubjectDTO {
+@AllArgsConstructor
+public class StudentDTO {
     private Long id;
     private String name;
-    
 }

@@ -14,7 +14,10 @@ import School.LMS.models.Users;
 import School.LMS.models.Subject;
 import School.LMS.repos.SubjectRepo;
 import School.LMS.repos.UserRepo;
+import School.LMS.repos.ClassRoomRepo;
+import School.LMS.models.ClassRoom;
 import java.util.Optional;
+import School.LMS.dto.TeacherClassStatusDTO;
 
 @Service
 @RequiredArgsConstructor
@@ -29,7 +32,9 @@ public class TeacherService {
     @Autowired
     private final UserRepo usersRepo;
 
-    @PreAuthorize("hasRole('TEACHER')")
+    @Autowired
+    private final ClassRoomRepo classRoomRepository;
+
     public void registerProfile(TeacherRegistrationDTO dto, String username) {
 
         Users user = usersRepo.findByUsername(username);
@@ -46,9 +51,18 @@ public class TeacherService {
         teacher.setDateOfBirth(dto.getDateOfBirth());
         teacher.setGender(dto.getGender());
         teacher.setStatus(dto.getStatus());
+        teacher.setContact(dto.getContact());
         teacher.setUser(user);
 
-        List<Subject> subjects = subjectRepository.findAllById(dto.getSubjectIds());
+        List<Subject> subjects = new ArrayList<>();
+
+        for (String subjectName : dto.getSubjectNames()) {
+            Subject subject = subjectRepository.findByName(subjectName)
+                .orElseThrow(() ->
+                    new RuntimeException("Subject not found: " + subjectName));
+
+            subjects.add(subject);
+        }
 
         subjects.forEach(sub -> {
             if (sub.getTeachers() == null) {
@@ -63,7 +77,20 @@ public class TeacherService {
     public boolean isProfileCompleted(String username) {
     Optional<Teacher> teacher = teacherRepository.findByUserUsername(username);
     return teacher.isPresent();  // profile completed if student record exists
-}
+    }
+
+    public TeacherClassStatusDTO getTeacherClassStatus(String username) {
+        Teacher teacher = teacherRepository.findByUserUsername(username)
+                .orElseThrow(() -> new RuntimeException("Teacher not found"));
+
+        Optional<ClassRoom> classRoom = classRoomRepository.findByTeacherId(teacher.getId());
+
+        if (classRoom.isEmpty()) {
+            return new TeacherClassStatusDTO(false);
+        }
+
+        return new TeacherClassStatusDTO(true);
+    }
 
 
     

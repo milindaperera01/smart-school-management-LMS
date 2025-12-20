@@ -17,6 +17,8 @@ public class TeacherRegistrationDTO {
     @NotBlank(message = "Status is required.")
     private String status;
 
-    @NotEmpty(message = "At least one subject must be selected.")
-    private List<Long> subjectIds; 
+    @NotBlank(message = "Contact Information is required.")
+    private String contact;
+
+    private List<String> subjectNames;
 }

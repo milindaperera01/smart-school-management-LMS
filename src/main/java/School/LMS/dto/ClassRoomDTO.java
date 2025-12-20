@@ -12,5 +12,5 @@ public class ClassRoomDTO {
     @Min(value = 1, message = "Grade level must be at least 1.")
     private Integer gradeLevel;
 
-    private  String teacherusername; 
+    private  String teacherUsername; 
 }

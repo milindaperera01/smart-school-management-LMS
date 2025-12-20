@@ -6,8 +6,6 @@ import jakarta.validation.constraints.NotBlank;
 
 @Data
 public class StudentRegistrationDTO {
-    @NotBlank(message = "id is required.")
-    private String id;
     
     @NotBlank(message = "Student name is required.")
     private String Name;
@@ -26,7 +24,11 @@ public class StudentRegistrationDTO {
 
     private String home_contact2;
 
-    @NotBlank(message = "Classroom ID is required.")
-    private String classroomId;
+
+    @Min(value = 1, message = "Grade level must be valid")
+    private Integer gradeLevel;
+
+    @NotBlank(message = "Class name is required.")
+    private String className;
 
 }

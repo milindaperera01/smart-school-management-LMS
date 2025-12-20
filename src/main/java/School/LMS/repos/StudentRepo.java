@@ -6,4 +6,5 @@ import java.util.Optional;
 
 public interface StudentRepo extends JpaRepository<Student, Long> {
     Optional<Student> findByUserUsername(String username);
+    
 }

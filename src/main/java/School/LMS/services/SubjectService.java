@@ -11,7 +11,7 @@ import School.LMS.dto.SubjectDTO;
 public class SubjectService {
     private final SubjectRepo subjectRepository;
 
-    @PreAuthorize("hasRole('PRINCIPAL')")
+
     public Subject createSubect(SubjectDTO subjectDTO) {
         if (subjectRepository.existsByName(subjectDTO.getName())) {
             throw new RuntimeException("Subject already exists!");

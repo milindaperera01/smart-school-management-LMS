@@ -22,14 +22,14 @@ public class StudentController {
     private final StudentService studentService;
 
     @PostMapping("/register")
-    @PreAuthorize("hasRole('STUDENT')")
+    @PreAuthorize("hasAuthority('STUDENT')")
     public ResponseEntity<?> registerStudent(@Valid @RequestBody StudentRegistrationDTO studentDTO, Principal principal) {
         studentService.registerStudent(studentDTO, principal.getName());
         return ResponseEntity.ok("Student registered successfully");
     }
 
     @PutMapping("/update-contact")
-    @PreAuthorize("hasRole('STUDENT')")
+    @PreAuthorize("hasAuthority('STUDENT')")
     public ResponseEntity<?> updateHomeContact(@Valid @RequestBody StudentContactUpdateDTO contactDTO, Principal principal) {
         studentService.updateHomeContact(contactDTO, principal.getName());
         return ResponseEntity.ok("Home contact updated successfully");

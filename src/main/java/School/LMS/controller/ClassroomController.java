@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import School.LMS.repos.ClassRoomRepo;
 import School.LMS.models.ClassRoom;
 import School.LMS.dto.ClassRoomDTO;
+import School.LMS.dto.ClassStudentsDTO;
+import java.security.Principal;
 import School.LMS.models.Teacher;
 import School.LMS.repos.TeacherRepo;
 import org.springframework.web.bind.annotation.*;
@@ -24,16 +26,22 @@ public class ClassroomController {
     private final ClassRoomService classRoomService;
 
     @PostMapping("/create")
-    @PreAuthorize("hasRole('PRINCIPAL')")
+    @PreAuthorize("hasAuthority('PRINCIPAL')")
     public ResponseEntity<ClassRoom> createClassRoom(@RequestBody ClassRoomDTO classRoomDTO) {
         ClassRoom createdClassRoom = classRoomService.createClassRoom(classRoomDTO);
         return ResponseEntity.ok(createdClassRoom);
     }
 
     @PutMapping("/update/{id}")
-    @PreAuthorize("hasRole('PRINCIPAL')")
+    @PreAuthorize("hasAuthority('PRINCIPAL')")
     public ResponseEntity<ClassRoom> updateClassRoom(@PathVariable Long id, @RequestBody ClassRoomDTO classRoomDTO) {
         ClassRoom updatedClassRoom = classRoomService.updateClassRoom(id, classRoomDTO);
         return ResponseEntity.ok(updatedClassRoom);
+    }
+
+    @GetMapping("/students")
+    @PreAuthorize("hasAuthority('TEACHER')")
+    public ClassStudentsDTO getMyStudents(Principal principal) {
+        return classRoomService.getStudentsForLoggedInTeacher(principal);
     }
 }

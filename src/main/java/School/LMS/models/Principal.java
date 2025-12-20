@@ -13,8 +13,11 @@ public class Principal {
     private long id;
 
     private String name;
+    private LocalDate dateOfBirth;
     private LocalDate enterDate;
     private String status;
+    private String contact;
+
 
     @OneToOne
     @JoinColumn(name = "user_id")

@@ -15,6 +15,7 @@ public class Teacher {
     private String dateOfBirth;
     private String gender;
     private String status;
+    private String contact;
 
     @OneToOne
     @JoinColumn(name = "user_id")
