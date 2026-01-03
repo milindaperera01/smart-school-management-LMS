@@ -34,4 +34,16 @@ public class StudentController {
         studentService.updateHomeContact(contactDTO, principal.getName());
         return ResponseEntity.ok("Home contact updated successfully");
     }
+
+    @GetMapping("/my-subjects")
+    @PreAuthorize("hasAuthority('STUDENT')")
+    public ResponseEntity<?> getMySubjects(Principal principal) {
+        return ResponseEntity.ok(studentService.getMySubjects(principal.getName()));
+    }
+
+    @GetMapping("/status")
+    @PreAuthorize("hasAuthority('STUDENT')")
+    public ResponseEntity<?> getStudentStatus(Principal principal) {
+        return ResponseEntity.ok(studentService.getStudentStatus(principal.getName()));
+    }
 }

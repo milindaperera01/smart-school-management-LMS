@@ -14,6 +14,14 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import School.LMS.repos.ClassRoomRepo;
+import School.LMS.dto.StudentSubjectDTO;
+import School.LMS.dto.SubjectDTO;
+import School.LMS.repos.GradeSubjectRepo;
+import School.LMS.models.GradeSubject;
+import java.util.List;
+import School.LMS.dto.StudentStatusDTO;
+
+
 
 
 @Service
@@ -28,6 +36,9 @@ public class StudentService {
 
     @Autowired
     private final ClassRoomRepo classroomRepo;
+
+    @Autowired
+    private final GradeSubjectRepo gradeSubjectRepo;
 
     public Student registerStudent(StudentRegistrationDTO studentDTO, String username) {
         Users user = userRepository.findByUsername(username);
@@ -72,6 +83,44 @@ public class StudentService {
     public boolean isProfileCompleted(String username) {
         return studentRepository.findByUserUsername(username).isPresent();
     }
+
+    public StudentSubjectDTO getMySubjects(String username) {
+
+        Student student = studentRepository.findByUserUsername(username)
+                .orElseThrow(() -> new RuntimeException("Student not found"));
+
+        ClassRoom classroom = student.getClassRoom();
+
+        int gradeLevel = classroom.getGradeLevel();
+        String className = classroom.getClassName();
+        List<GradeSubject> gradeSubjects =
+        gradeSubjectRepo.findByGradeLevel(gradeLevel);
+
+
+        List<SubjectDTO> subjects = gradeSubjects.stream()
+            .map(gs -> new SubjectDTO(
+                gs.getSubject().getId(),
+                gs.getSubject().getName()
+            ))
+            .toList();
+
+
+        return new StudentSubjectDTO(
+                gradeLevel,
+                className,
+                subjects
+        );
+    }
+
+    public StudentStatusDTO getStudentStatus(String username) {
+        Student student = studentRepository.findByUserUsername(username)
+                .orElseThrow(() -> new RuntimeException("Student not found"));
+
+        Long classId = student.getClassRoom().getId();
+        return new StudentStatusDTO(classId);
+    }
+
+    
 
 
 }

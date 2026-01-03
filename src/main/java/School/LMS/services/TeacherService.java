@@ -18,6 +18,9 @@ import School.LMS.repos.ClassRoomRepo;
 import School.LMS.models.ClassRoom;
 import java.util.Optional;
 import School.LMS.dto.TeacherClassStatusDTO;
+import School.LMS.repos.TeachingAssignmentRepo;
+import School.LMS.dto.TeacherAssignmentDTO;
+import School.LMS.dto.TeacherDTO;
 
 @Service
 @RequiredArgsConstructor
@@ -34,6 +37,9 @@ public class TeacherService {
 
     @Autowired
     private final ClassRoomRepo classRoomRepository;
+
+    @Autowired
+    private final TeachingAssignmentRepo teachingAssignmentRepo;
 
     public void registerProfile(TeacherRegistrationDTO dto, String username) {
 
@@ -84,12 +90,40 @@ public class TeacherService {
                 .orElseThrow(() -> new RuntimeException("Teacher not found"));
 
         Optional<ClassRoom> classRoom = classRoomRepository.findByTeacherId(teacher.getId());
-
         if (classRoom.isEmpty()) {
-            return new TeacherClassStatusDTO(false);
+            return new TeacherClassStatusDTO(false,null);
         }
 
-        return new TeacherClassStatusDTO(true);
+        return new TeacherClassStatusDTO(true, classRoom.get().getId());
+    }
+
+    public List<TeacherAssignmentDTO> getTeacherAssignments(String username) {
+
+    Teacher teacher = teacherRepository.findByUserUsername(username)
+            .orElseThrow(() -> new RuntimeException("Teacher not found"));
+
+    return teachingAssignmentRepo.findByTeacher(teacher).stream()
+                .map(a -> new TeacherAssignmentDTO(
+                        a.getId(),
+                        a.getClassroom().getId(),
+                        a.getClassroom().getGradeLevel(),
+                        a.getClassroom().getClassName(),
+                        a.getSubject().getId(),
+                        a.getSubject().getName()
+                ))
+                .toList();
+}
+
+
+
+    public List<TeacherDTO> getAllTeachers() {
+        return teacherRepository.findAll()
+                .stream()
+                .map(t -> new TeacherDTO(
+                        t.getId(),
+                        t.getName()
+                ))
+                .toList();
     }
 
 

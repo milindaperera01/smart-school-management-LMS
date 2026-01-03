@@ -4,7 +4,6 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class TeacherClassStatusDTO {
-    private boolean hasClass;
+public class StudentStatusDTO {
     private Long classId;
 }

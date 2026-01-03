@@ -3,10 +3,13 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.util.List;
 
+
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 @Table(name = "classroom")
 public class ClassRoom {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
