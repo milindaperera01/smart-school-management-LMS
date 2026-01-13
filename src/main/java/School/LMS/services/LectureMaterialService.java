@@ -57,16 +57,15 @@ public class LectureMaterialService {
         Files.createDirectories(uploadPath);
         }
 
-        String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
-        Path filePath = uploadPath.resolve(fileName);
+        String savedFileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
+        Path filePath = uploadPath.resolve(savedFileName);
 
         file.transferTo(filePath.toFile());
 
-
         LectureMaterial lm = new LectureMaterial();
         lm.setTitle(title);
-        lm.setFileName(file.getOriginalFilename());
-        lm.setFilePath(filePath.toString()); 
+        lm.setFileName(savedFileName);   // ✅ store the actual saved file name
+        lm.setFilePath(filePath.toString());
         lm.setUploadedAt(LocalDateTime.now());
         lm.setTeacher(teacher);
         lm.setSubject(subject);

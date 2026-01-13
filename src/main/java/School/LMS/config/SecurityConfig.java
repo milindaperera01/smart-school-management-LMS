@@ -62,7 +62,6 @@ public class SecurityConfig {
                         .requestMatchers("subjects/create").hasRole("PRINCIPAL")
                         .anyRequest().authenticated()
                 )
-                .httpBasic(Customizer.withDefaults())
                 .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
