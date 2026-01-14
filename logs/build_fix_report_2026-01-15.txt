@@ -1,0 +1,47 @@
+BUILD FIX REPORT
+Date: January 15, 2026
+Project: Smart School Management LMS
+
+1. ISSUE DESCRIPTION
+--------------------
+The application failed to build using Maven (`./mvnw clean install`).
+The build log showed over 100 compilation errors.
+
+2. ROOT CAUSE ANALYSIS
+----------------------
+Two primary issues were identified:
+
+A. Missing Source Code
+   - File: src/main/java/School/LMS/dto/BatchMarksAdd.java
+   - Problem: The file existed but was completely empty (0 bytes).
+   - Impact: Classes depending on it (MarksController, MarksService) failed to compile with "cannot access" and "cannot find symbol" errors.
+
+B. Lombok Annotation Processing Failure
+   - Problem: The project uses Project Lombok (@Data, @Getter, @Setter, etc.) to generate code automatically.
+   - Root Cause: The `pom.xml` file lacked the specific configuration for `maven-compiler-plugin` to run the Lombok annotation processor.
+   - Impact: Java compiler could not find standard methods like `getId()`, `setTitle()`, or constructors, resulting in ~100 "cannot find symbol" errors across the entire codebase.
+
+3. RESOLUTION STEPS
+-------------------
+The following actions were taken to resolve the issues:
+
+A. Implemented BatchMarksAdd DTO
+   - Populated `src/main/java/School/LMS/dto/BatchMarksAdd.java` with the required fields:
+     - classroom (String)
+     - subject (String)
+     - exam_name (String)
+     - marks (Map<String, Double>)
+   - Added Lombok annotations (@Data, @AllArgsConstructor, @NoArgsConstructor).
+
+B. Updated Maven Configuration (pom.xml)
+   - Added the `maven-compiler-plugin` to the `<build>` section.
+   - Configured `annotationProcessorPaths` to include `lombok`.
+   - Removed duplicate dependency entries to clean up the build file.
+
+4. VERIFICATION
+---------------
+- Command Executed: `./mvnw clean install`
+- Result: BUILD SUCCESS
+- Tests: 1 test run, 0 failures.
+
+The application is now in a buildable state.
