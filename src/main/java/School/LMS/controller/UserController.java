@@ -47,6 +47,7 @@ public class UserController {
         Users user = new Users();
         user.setUsername(userReq.getUsername());
         user.setPassword(userReq.getPassword());
+        System.out.println(userReq.getUsername()+" "+userReq.getPassword());
         String token = userService.verify(user); // returns JWT token
         String role = userService.getRole(user.getUsername()); 
         String username = user.getUsername();

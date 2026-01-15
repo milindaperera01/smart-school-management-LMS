@@ -58,6 +58,7 @@ public class MarksService {
         String[] parts = rawClass.split("-");
         int gradeLevel = Integer.parseInt(parts[0]);
         String classLetter = parts[1];
+        System.out.println("Parsed class: Grade " + gradeLevel + ", Letter " + classLetter);
         ClassRoom classroom = classRoomRepo.findByGradeLevelAndClassName(gradeLevel, classLetter)
                 .orElseThrow(() -> new RuntimeException("Invalid class ID: " + req.getClassroom()));
 

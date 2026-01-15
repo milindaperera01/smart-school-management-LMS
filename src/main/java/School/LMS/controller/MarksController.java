@@ -27,6 +27,7 @@ public class MarksController {
     @PostMapping("/add/batch")
     public ResponseEntity<String> addBatchMarks(@Valid @RequestBody BatchMarksAdd request) {
         try {
+            System.out.println("Received batch marks request: ");
             String response = marksService.addBatchMarks(request);
             return ResponseEntity.status(HttpStatus.CREATED).body(response);
         } catch (Exception e) {
