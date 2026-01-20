@@ -2,6 +2,7 @@ package School.LMS.services;
 
 import School.LMS.dto.BatchMarksAdd;
 import School.LMS.dto.MarksAdd;
+import School.LMS.dto.StudentExamMarkDTO;
 import School.LMS.models.ClassRoom;
 import School.LMS.models.Marks;
 import School.LMS.models.Student;
@@ -17,6 +18,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -90,5 +92,40 @@ public class MarksServiceTest {
 
         assertTrue(result.contains("Successfully added marks for 2 students"));
         verify(marksRepo).saveAll(anyList());
+    }
+
+    @Test
+    void getMarksForStudentExam_ReturnsList() {
+        Long studentId = 5L;
+        String examName = "MidTerm";
+
+        Student student = new Student();
+        student.setId(studentId);
+
+        Subject subject = new Subject();
+        subject.setId(9L);
+
+        ClassRoom classRoom = new ClassRoom();
+        classRoom.setId(3L);
+
+        Marks mark = new Marks();
+        mark.setId(11L);
+        mark.setExam_name(examName);
+        mark.setScore(78.5);
+        mark.setStudent(student);
+        mark.setSubject(subject);
+        mark.setClassroom(classRoom);
+
+        when(studentRepo.existsById(studentId)).thenReturn(true);
+        when(marksRepo.findByStudentIdAndExamName(studentId, examName)).thenReturn(List.of(mark));
+
+        List<StudentExamMarkDTO> result = marksService.getMarksForStudentExam(studentId, examName);
+
+        assertEquals(1, result.size());
+        assertEquals(11L, result.get(0).id());
+        assertEquals(examName, result.get(0).examName());
+        assertEquals(78.5, result.get(0).score());
+        assertEquals(9L, result.get(0).subjectId());
+        assertEquals(3L, result.get(0).classId());
     }
 }

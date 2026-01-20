@@ -2,12 +2,15 @@ package School.LMS.controller;
 
 import School.LMS.dto.BatchMarksAdd;
 import School.LMS.dto.MarksAdd;
+import School.LMS.dto.StudentExamMarkDTO;
 import School.LMS.services.MarksService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/marks")
@@ -33,5 +36,13 @@ public class MarksController {
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Error: " + e.getMessage());
         }
+    }
+
+    @GetMapping("/student-exam")
+    public ResponseEntity<List<StudentExamMarkDTO>> getMarksForStudentExam(
+            @RequestParam Long studentId,
+            @RequestParam String examName
+    ) {
+        return ResponseEntity.ok(marksService.getMarksForStudentExam(studentId, examName));
     }
 }
