@@ -2,6 +2,7 @@ package School.LMS.services;
 
 import School.LMS.dto.BatchMarksAdd;
 import School.LMS.dto.MarksAdd;
+import School.LMS.dto.StudentExamMarkDTO;
 import School.LMS.models.*;
 import School.LMS.repos.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -87,5 +88,22 @@ public class MarksService {
         marksRepo.saveAll(marksList);
 
         return "Successfully added marks for " + marksList.size() + " students";
+    }
+
+    public List<StudentExamMarkDTO> getMarksForStudentExam(Long studentId, String examName) {
+        if (!studentRepo.existsById(studentId)) {
+            throw new RuntimeException("Invalid student ID: " + studentId);
+        }
+
+        return marksRepo.findByStudentIdAndExamName(studentId, examName)
+                .stream()
+                .map(mark -> new StudentExamMarkDTO(
+                        mark.getId(),
+                        mark.getExam_name(),
+                        mark.getScore(),
+                        mark.getSubject() != null ? mark.getSubject().getId() : null,
+                        mark.getClassroom() != null ? mark.getClassroom().getId() : null
+                ))
+                .collect(Collectors.toList());
     }
 }
